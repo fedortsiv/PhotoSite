@@ -9,28 +9,30 @@ $("#contactForm").submit(function(event){
     submitForm();
 });
 
-
 function submitForm(){
     // Initiate Variables With Form Content
 
-    var email = $("#email").val();
-    var password = $("#password").val();
+    var email = $("#InputEmail").val();
+    var password = $("#InputPassword").val();
  
     $.ajax({
         type: "POST",
-        url: "php/form-process-login.php",
+        url: "php/login.php",
         data: "&email=" + email + "&password=" + password,
         success : function(text){
             if (text == "success"){
                 formSuccess();
             }
-            else alert("fail");
+            else alert(text);
         }
     });
 }
 function formSuccess(){
     $( "#msgSubmit" ).removeClass( "d-none" );
-    alert("success");
+    setTimeout(function(){
+    $("#myModal").modal('hide');
+	}, 1000);
+
 }
 
 
@@ -40,3 +42,30 @@ $(document).ready(function(){
         $("#myModal").modal('show');
     });
 });
+
+$(document).ready(function(){
+$(".new_user").click(function(){
+	sendForm();
+});
+});
+
+
+function sendForm(){
+    // Initiate Variables With Form Content
+
+    var email = $("#InputEmail").val();
+    var password = $("#InputPassword").val();
+ 
+    $.ajax({
+        type: "POST",
+        url: "php/registration.php",
+        data: "&email=" + email + "&password=" + password,
+        success : function(text){
+            if (text == "success"){
+                alert(password);
+            }
+            else alert(text);
+        }
+    });
+}
+//$(#new_user).on
