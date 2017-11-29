@@ -10,15 +10,26 @@
     <link rel='stylesheet' href='/css/bootstrap.min.css' type='text/css' media='all'>
     <link rel="stylesheet" href="css/main.css"> 
 
-    <?php include 'php/main.php'; ?>
-
+    <?php 
+    //include 'php/main.php'; 
+    //require_once('php/config.php');
+    ?>
 
 </head>
 <body>
 
 <!-- Navbar -->
 <nav class = "navbar fixed-top  navbar-dark bg-primary">
- <button class="btn btn-primary" type="button">Menu</button>
+ <div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Menu
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
 <a class="navbar-brand" href="#">Photo Site </a>
 	<button type="button" class="btn btn-primary login" data-toggle="modal" data-target="#exampleModal">
   Log in
@@ -57,19 +68,17 @@
             </div>
             <div class="modal-footer">
 			    <div class="col-sm-5">
-			      <button type="button" class="btn btn-secondary">New User</button>
+			      <button type="button" class="btn btn-secondary new_user">New User</button>
 			    </div>
 
     
  			   <div class="col-sm-5">
-			      <button type="button" class="btn btn-secondary">Forget Password</button>
+			      <button type="button" class="btn btn-secondary forget_password">Forget Password</button>
  			   </div>
             </div>
         </div>
     </div>
 </div>
-
-
 
 
 
