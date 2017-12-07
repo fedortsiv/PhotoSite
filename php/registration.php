@@ -15,11 +15,8 @@ if (empty($_POST["email"])) {
 if (empty($_POST["password"])) {
     $errorMSG .= "Password is required ";
 } else {
-<<<<<<< HEAD
+
     $password = md5(trim($_POST["password"]));
-=======
-    $password = trim($_POST["password"]);
->>>>>>> 7ba3b4a66ccf7283331aeb2e86684cc9779ff49d
 }
 
 $pass = "";
@@ -46,10 +43,7 @@ if ($email_is == "") {
   mysqli_stmt_execute($stmt2);
                       
   mysqli_stmt_close($stmt);
-<<<<<<< HEAD
   echo "sukcess";
-=======
->>>>>>> 7ba3b4a66ccf7283331aeb2e86684cc9779ff49d
 } 
 } else{
 	echo "email  is already taken";
