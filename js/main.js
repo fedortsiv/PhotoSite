@@ -29,8 +29,10 @@ function submitForm(){
 }
 function formSuccess(){
     $( "#msgSubmit" ).removeClass( "d-none" );
+
     setTimeout(function(){
     $("#myModal").modal('hide');
+    location.reload();
 	}, 1000);
 
 }

@@ -16,7 +16,7 @@ if (empty($_POST["email"])) {
 if (empty($_POST["password"])) {
     $errorMSG .= "Password is required ";
 } else {
-    $password = trim($_POST["password"]);
+    $password = md5(trim($_POST["password"]));
 }
 
 $pass = "";
