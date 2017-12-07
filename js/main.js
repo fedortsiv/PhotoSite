@@ -29,10 +29,15 @@ function submitForm(){
 }
 function formSuccess(){
     $( "#msgSubmit" ).removeClass( "d-none" );
+<<<<<<< HEAD
 
     setTimeout(function(){
     $("#myModal").modal('hide');
     location.reload();
+=======
+    setTimeout(function(){
+    $("#myModal").modal('hide');
+>>>>>>> 7ba3b4a66ccf7283331aeb2e86684cc9779ff49d
 	}, 1000);
 
 }
