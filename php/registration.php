@@ -21,7 +21,7 @@ if (empty($_POST["password"])) {
 
 $pass = "";
 $first_name = "";
-
+$category = "user";
 
 // перевірка наявності реєстрації
 
@@ -36,13 +36,13 @@ if ($stmt = mysqli_prepare($link, "SELECT email FROM author WHERE email = ?")) {
 } 
 
 if ($email_is == "") {
-	$sql = "INSERT INTO author (email, password) VALUES (?, ?)";
+	$sql = "INSERT INTO author (email, category, password) VALUES (?, ?, ?)";
   if ($stmt2 = mysqli_prepare($link, $sql)) {
   
-  mysqli_stmt_bind_param($stmt2, "ss", $usermail, $password);
+  mysqli_stmt_bind_param($stmt2, "sss", $usermail, $category, $password);
   mysqli_stmt_execute($stmt2);
                       
-  mysqli_stmt_close($stmt);
+  mysqli_stmt_close($stmt2);
   echo "sukcess";
 } 
 } else{

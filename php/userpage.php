@@ -10,6 +10,9 @@ if(!isset($_SESSION['category']) || empty($_SESSION['category'])){
   //exit;
 }
 echo $_SESSION['category'];
+
+require_once("config.php");
+require_once("uploadimg.php");
 //require_once 'php/base.php';
 ?>
 <!DOCTYPE html>
@@ -17,7 +20,7 @@ echo $_SESSION['category'];
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>PhotoSite </title>
+    <title>PhotoSite</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel='stylesheet' href='/css/bootstrap.min.css' type='text/css' media='all'>
@@ -38,9 +41,8 @@ echo $_SESSION['category'];
     Menu
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="php/userpage.php">User Page</a>
+    <a class="dropdown-item" href="#">Action</a>
 
-    <a class="dropdown-item" href="#">Another action</a>
     <a class="dropdown-item" href="#">Something else here</a>
   </div>
 </div>
@@ -81,26 +83,23 @@ echo $_SESSION['category'];
 			</form>                 
             </div>
             <div class="modal-footer">
-			    <div class="col-sm-4">
+			    <div class="col-sm-5">
 			      <button type="button" class="btn btn-secondary new_user">New User</button>
 			    </div>
 
     
- 			   <div class="col-sm-4">
+ 			   <div class="col-sm-5">
 			      <button type="button" class="btn btn-secondary forget_password">Forget Password</button>
  			   </div>
-         <div class="col-sm-4">
-            <a class="btn btn-primary" href="php/logout.php" role="button">Logout</a>
-         </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- load image -->
-
-
-
+<form method="post" action="" enctype='multipart/form-data' style="padding-top: 50px;">
+  <input type='file' name='file' />
+  <input type='submit' value='Save name' name='but_upload'>
+</form>
 
 
 	<script src="js/jquery.min.js"></script>
