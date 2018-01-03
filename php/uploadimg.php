@@ -1,13 +1,13 @@
 <?php
 
+require_once("config.php");
 
-
-if(isset($_POST['upload'])){
+if(isset($_POST['but_upload'])){
  
  $name = $_FILES['file']['name'];
- $target_dir = "upload/";
+ $target_dir = "image/";
  $target_file = $target_dir . basename($_FILES["file"]["name"]);
-
+echo "$target_file";
  // Select file type
  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -15,22 +15,28 @@ if(isset($_POST['upload'])){
  $extensions_arr = array("jpg","jpeg","png","gif");
 
  // Check extension
- if( in_array($imageFileType,$extensions_arr) ){
+ if( in_array($imageFileType, $extensions_arr) ){
  
   // Insert record
- if ($stmt = mysqli_prepare($link, "INSERT INTO photo title WHERE name = ?")) {
+  $zap = "INSERT INTO photo (title) VALUES (?)";
+ if ($stmt = mysqli_prepare($link, $zap)) {
   
   mysqli_stmt_bind_param($stmt, "s", $name);
   mysqli_stmt_execute($stmt);
-  
+
+  // Upload file
+  move_uploaded_file($_FILES['file']['tmp_name'], $target_dir.$name);  
 
   mysqli_stmt_close($stmt);
+
+
 } else{
-  $success = false;
-  $errorMSG = "Trabl with connect to DB";
+  //$success = false;
+  echo "Trabl with connect to DB";
     }
 }
 }
+
 /*
   $query = "insert into images(name) values('".$name."')";
   mysqli_query($link,$query);
@@ -44,7 +50,7 @@ if(isset($_POST['upload'])){
  }
  */
 
-?>
+
 
 /*
 <?php
@@ -70,5 +76,4 @@ $image_src = "upload/".$image;
 //    echo "<img src="$image_src" alt="..." class="img-thumbnail">";
 //  }
   //<img src="..." alt="..." class="img-thumbnail">
-//?>
-//
+?>
