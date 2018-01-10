@@ -38,7 +38,8 @@ require_once 'php/footer.php';
 
 
 
-<div class="container gal-container" style=padding-top: 60px;>
+<div class="container" style= "padding-top: 60px";>
+  <div class="row form-group">
 <?php
 
 //<!-- load image -->
@@ -54,30 +55,32 @@ while ($row = mysqli_fetch_array($result)) {
 
 ?>
 
-    <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
-      <div class="box">
-        <a href="#" data-toggle="modal" data-target="#<?php echo $i?>">
-          <img src="<?php echo $image_src ?>" style="max-width: 300px;" >
-        </a>
-        <div class="modal fade" id="<?php echo $i?>" tabindex="-<?php echo $i?>" role="dialog">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-              <div class="modal-body">
-                <img src="<?php echo $image_src ?>">
-              </div>
-                <div class="col-md-12 description">
-                  <h4>This is the first one on my Gallery</h4>
+    <div class="col-md-6 col-sm-12 co-xs-12">
+      <div class="panel panel-default">
+               <div class="panel-image">
+                    <img src="<?php echo $image_src ?>" class="panel-image-preview" />
+                    <label for="toggle-1"></label>
+               </div>
+
+                <input type="checkbox" id="toggle-1" class="panel-image-toggle">
+                <div class="panel-body">
+                    <h4>Title of Image</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper et.</p>
                 </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                <div class="panel-footer text-center">
+                    <a href="#download"><span class="glyphicon glyphicon-download"></span></a>
+                    <a href="#facebook"><span class="fa fa-facebook"></span></a>
+                    <a href="#twitter"><span class="fa fa-twitter"></span></a>
+                    <a href="#share"><span class="glyphicon glyphicon-share-alt"></span></a>
+                </div>
+
+       </div>
     </div>
 <?php
 }
 
 ?>
+</div>
 
 </div>
 
