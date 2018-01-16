@@ -5,9 +5,11 @@ require_once("config.php");
 if(isset($_POST['but_upload'])){
  
  $name = $_FILES['file']['name'];
+ $idauthor = $_POST['idauthor'];
  $target_dir = "image/";
  $target_file = $target_dir . basename($_FILES["file"]["name"]);
 echo "$target_file";
+echo "$idauthor";
  // Select file type
  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -18,10 +20,10 @@ echo "$target_file";
  if( in_array($imageFileType, $extensions_arr) ){
  
   // Insert record
-  $zap = "INSERT INTO photo (title) VALUES (?)";
+  $zap = "INSERT INTO photo (title, idauthor) VALUES (?, ?)";
  if ($stmt = mysqli_prepare($link, $zap)) {
   
-  mysqli_stmt_bind_param($stmt, "s", $name);
+  mysqli_stmt_bind_param($stmt, "ss", $name, $idauthor);
   mysqli_stmt_execute($stmt);
 
   // Upload file

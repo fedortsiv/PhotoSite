@@ -21,13 +21,14 @@ if (empty($_POST["password"])) {
 
 $pass = "";
 $first_name = "";
-$category = "user";														
+$category = "user";
+$idauthor = "";														
 
-if ($stmt = mysqli_prepare($link, "SELECT password, first_name, category FROM author WHERE email = ?")) {
+if ($stmt = mysqli_prepare($link, "SELECT idauthor, password, first_name, category FROM author WHERE email = ?")) {
   
   mysqli_stmt_bind_param($stmt, "s", $usermail);
   mysqli_stmt_execute($stmt);
-  mysqli_stmt_bind_result($stmt, $pass, $first_name, $category);
+  mysqli_stmt_bind_result($stmt, $idauthor, $pass, $first_name, $category);
   mysqli_stmt_fetch($stmt);
                       
   mysqli_stmt_close($stmt);
@@ -40,6 +41,7 @@ if ($pass == $password) {
   session_start();
   //$_SESSION['username'] = $first_name;
   $_SESSION['category'] = $category;
+  $_SESSION['idauthor'] = $idauthor;
 
   $success = true;
 }else{

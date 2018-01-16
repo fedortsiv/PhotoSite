@@ -6,6 +6,7 @@ session_start();
 if(!isset($_SESSION['category']) || empty($_SESSION['category'])){
   //header("location: login.php");
   echo "string1";
+
   //require_once 'php/base.php';
   //exit;
 }
@@ -45,13 +46,20 @@ require_once 'php/footer.php';
 //<!-- load image -->
 
 $sql = "SELECT title FROM photo";
+$sqlComent = "SELECT comvalue, idauthor FROM comments";
 $result = mysqli_query($link,$sql);
+$resultComent = mysqli_query($link, $sqlComent);
 $i = 1;
 
 while ($row = mysqli_fetch_array($result)) {
   $image = $row['title'];
   $image_src = "php/image/".$image;
   $i++;
+
+  for ($i=0; $i < ; $i++) { 
+    $rowComent = mysqli_fetch_array($resultComent);
+  }
+  
 
 ?>
 
@@ -62,16 +70,27 @@ while ($row = mysqli_fetch_array($result)) {
                     <label for="toggle-1"></label>
                </div>
 
-                <input type="checkbox" id="toggle-1" class="panel-image-toggle">
+               <input type="checkbox" id="toggle-1" class="panel-image-toggle">
+
                 <div class="panel-body">
-                    <h4>Title of Image</h4>
+                    <h4>Comments</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper et.</p>
+
+                <?php if(isset($_SESSION['category'])) { ?>
+                  <form>
+                    <div class="form-group mx-sm-3 mb-2">
+                      <label for="inputPassword2" class="sr-only">Coment</label>
+                         <input type="text" class="form-control" id="inputPassword2" placeholder="enter comment">
+                    </div>
+                   <button type="submit" class="btn btn-primary mb-2">Confirm Coment</button>
+                  </form>
+                  <?php  }  ?>
+
                 </div>
                 <div class="panel-footer text-center">
+
                     <a href="#download"><span class="glyphicon glyphicon-download"></span></a>
                     <a href="#facebook"><span class="fa fa-facebook"></span></a>
-                    <a href="#twitter"><span class="fa fa-twitter"></span></a>
-                    <a href="#share"><span class="glyphicon glyphicon-share-alt"></span></a>
                 </div>
 
        </div>
